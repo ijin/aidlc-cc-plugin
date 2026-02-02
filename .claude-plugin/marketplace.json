@@ -1,0 +1,42 @@
+{
+  "name": "aidlc-cc-plugin",
+  "owner": {
+    "name": "ijin"
+  },
+  "metadata": {
+    "description": "AI-Driven Development Lifecycle - a structured, adaptive software development methodology guided by AI"
+  },
+  "plugins": [
+    {
+      "name": "aidlc",
+      "source": "./",
+      "description": "AI-Driven Development Lifecycle - a structured, adaptive software development methodology guided by AI",
+      "version": "0.1.0",
+      "author": {
+        "name": "ijin"
+      },
+      "homepage": "https://github.com/ijin/aidlc-cc-plugin",
+      "repository": "https://github.com/ijin/aidlc-cc-plugin",
+      "license": "MIT-0",
+      "keywords": [
+        "aidlc",
+        "ai-driven",
+        "development-lifecycle",
+        "methodology",
+        "claude-code",
+        "plugin",
+        "software-engineering",
+        "workflow",
+        "ai-assisted"
+      ],
+      "category": "methodology",
+      "tags": [
+        "aidlc",
+        "ai-driven",
+        "workflow",
+        "structured-development"
+      ],
+      "strict": true
+    }
+  ]
+}
