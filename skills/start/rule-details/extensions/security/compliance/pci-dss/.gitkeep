@@ -1,0 +1,5 @@
+# PCI-DSS Compliance Extensions
+
+This directory is reserved for PCI-DSS compliance extension rules.
+
+Extension files placed here will be automatically loaded and enforced when enabled during the Requirements Analysis phase.

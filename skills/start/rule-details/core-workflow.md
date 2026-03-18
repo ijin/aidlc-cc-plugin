@@ -20,6 +20,23 @@ The AI model intelligently assesses what stages are needed based on:
 - Read the file `rule-details/common/question-format-guide.md` for question formatting rules
 - Reference these throughout the workflow execution
 
+## MANDATORY: Extensions Loading
+**CRITICAL**: At workflow start, scan the `rule-details/extensions/` directory recursively for all `.md` files. These are extension rule files that apply as cross-cutting constraints across the entire workflow.
+
+**Loading process**:
+1. List all subdirectories under `rule-details/extensions/` (e.g., `rule-details/extensions/security/`, `rule-details/extensions/compliance/`)
+2. Load every `.md` file found within those subdirectories
+3. Each extension file defines its own verification criteria and enforcement rules as cross-cutting constraints
+
+**Enforcement**:
+- Extension rules are hard constraints, not optional guidance
+- At each stage, the model intelligently evaluates which extension rules are applicable based on the stage's purpose, the artifacts being produced, and the context of the work — enforce only those rules that are relevant
+- Rules that are not applicable to the current stage should be marked as N/A in the compliance summary (this is not a blocking finding)
+- Non-compliance with any applicable enabled extension rule is a **blocking finding** — do NOT present stage completion until resolved
+- When presenting stage completion, include a summary of extension rule compliance (compliant/non-compliant/N/A per rule, with brief rationale for N/A determinations)
+
+**Conditional Enforcement**: Extensions may be conditionally enabled/disabled. See `rule-details/inception/requirements-analysis.md` for the collection mechanism. Before enforcing any extension at ANY stage, check its `Enabled` status in `aidlc-docs/aidlc-state.md` under `## Extension Configuration`. Skip disabled extensions and log the skip in audit.md. Default to enforced if no configuration exists. Extensions without an `## Applicability Question` are always enforced.
+
 ## MANDATORY: Content Validation
 **CRITICAL**: Before creating ANY file, you MUST validate content according to `rule-details/common/content-validation.md` rules:
 - Validate Mermaid diagram syntax

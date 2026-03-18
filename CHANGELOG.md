@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.5] - 2026-02-24
+
+### Added
+- Security extensions framework with OWASP Top 10 baseline rules (15 SECURITY rules)
+- Extensions loading and enforcement mechanism in core workflow
+- Extension applicability questions in requirements analysis (adapted for AskUserQuestion)
+- Placeholder directories for HIPAA, PCI-DSS, SOC2, and customer-specific security extensions
+
+### Upstream
+- Synced with [aidlc-workflows v0.1.5](https://github.com/aws-samples/aidlc-workflows/releases/tag/v0.1.5)
+- Skipped v0.1.3 (bug fix reverted, net zero rule changes) and v0.1.4 (path resolution only, not applicable)
+
 ## [0.1.2] - 2026-02-08
 
 ### Added

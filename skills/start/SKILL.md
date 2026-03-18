@@ -59,6 +59,9 @@ The full AI-DLC methodology is documented in supporting files that you MUST read
 ### Operations Phase Rules (read when entering operations)
 - **[rule-details/operations/operations.md](rule-details/operations/operations.md)** - Operations phase guidance
 
+### Extensions (loaded at workflow start, enforced as cross-cutting constraints)
+- **[rule-details/extensions/security/baseline/security-baseline.md](rule-details/extensions/security/baseline/security-baseline.md)** - OWASP Top 10 baseline security rules
+
 ## User Intent
 
 The user has provided the following intent for this workflow:

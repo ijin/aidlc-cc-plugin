@@ -1,0 +1,5 @@
+# SOC2 Compliance Extensions
+
+This directory is reserved for SOC2 compliance extension rules.
+
+Extension files placed here will be automatically loaded and enforced when enabled during the Requirements Analysis phase.

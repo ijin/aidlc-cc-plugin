@@ -1,0 +1,11 @@
+# Customer-Specific Security Extensions
+
+This directory is reserved for organization-specific security extension rules.
+
+Customers can add their own custom security requirements here. Extension files placed in this directory will be automatically loaded and enforced when enabled during the Requirements Analysis phase.
+
+## Example Use Cases
+- Company-specific coding standards
+- Internal security policies
+- Industry-specific requirements not covered by standard compliance frameworks
+- Custom threat model requirements
