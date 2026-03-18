@@ -104,7 +104,12 @@ Analyze whatever the user has provided:
    - **MANDATORY**: Keep asking questions until ALL ambiguities are resolved OR user explicitly asks to proceed
    - **AFTER collecting answers**: Create `aidlc-docs/inception/requirements/questions-summary.md` to record the Q&A for audit trail
 
+### ⛔ GATE: Await User Answers
+DO NOT proceed to Step 7 until all clarifying questions are answered and validated.
+Present the questions to the user and STOP.
+
 ### Step 7: Generate Requirements Document
+   - **PREREQUISITE**: Step 6 gate must be passed — all answers received and analyzed
    - Create `aidlc-docs/inception/requirements/requirements.md`
    - Include intent analysis summary at the top:
      - User request
