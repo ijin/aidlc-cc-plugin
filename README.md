@@ -173,9 +173,14 @@ AI-DLC will skip unnecessary stages and focus on the specific issue.
 
 ## Acknowledgments
 
-This plugin is adapted from the [AWS AI-DLC Workflows](https://github.com/aws-samples/aidlc-workflows) reference implementation, originally designed for Amazon Q Developer / Kiro CLI. It has been adapted for Claude Code's plugin system with chat-based interaction patterns.
+This plugin is adapted from the [AWS AI-DLC Workflows](https://github.com/awslabs/aidlc-workflows) reference implementation, originally designed for Amazon Q Developer / Kiro CLI. It has been adapted for Claude Code's plugin system with chat-based interaction patterns.
 
-Original methodology developed by AWS Samples team.
+For more information about AI-DLC methodology, see:
+- [AI-DLC Methodology Blog](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/)
+- [AI-DLC Open-source Launch Blog](https://aws.amazon.com/blogs/devops/open-sourcing-adaptive-workflows-for-ai-driven-development-life-cycle-ai-dlc/)
+- [AI-DLC Example Walkthrough Blog](https://aws.amazon.com/blogs/devops/building-with-ai-dlc-using-amazon-q-developer/)
+
+Original methodology developed by the AWS team.
 
 ## Contributing
 

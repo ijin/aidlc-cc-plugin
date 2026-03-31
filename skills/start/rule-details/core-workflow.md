@@ -20,22 +20,28 @@ The AI model intelligently assesses what stages are needed based on:
 - Read the file `rule-details/common/question-format-guide.md` for question formatting rules
 - Reference these throughout the workflow execution
 
-## MANDATORY: Extensions Loading
-**CRITICAL**: At workflow start, scan the `rule-details/extensions/` directory recursively for all `.md` files. These are extension rule files that apply as cross-cutting constraints across the entire workflow.
+## MANDATORY: Extensions Loading (Context-Optimized)
+**CRITICAL**: At workflow start, scan the `rule-details/extensions/` directory recursively but load ONLY lightweight opt-in files — NOT full rule files. Full rule files are loaded on-demand after the user opts in.
 
 **Loading process**:
 1. List all subdirectories under `rule-details/extensions/` (e.g., `rule-details/extensions/security/`, `rule-details/extensions/compliance/`)
-2. Load every `.md` file found within those subdirectories
-3. Each extension file defines its own verification criteria and enforcement rules as cross-cutting constraints
+2. In each subdirectory, load ONLY `*.opt-in.md` files — these contain the extension's opt-in prompt. The corresponding rules file is derived by convention: strip the `.opt-in.md` suffix and append `.md` (e.g., `security-baseline.opt-in.md` → `security-baseline.md`)
+3. Do NOT load full rule files (e.g., `security-baseline.md`) at this stage
 
-**Enforcement**:
+**Deferred Rule Loading**:
+- During Requirements Analysis, opt-in prompts from the loaded `*.opt-in.md` files are presented to the user
+- When the user opts IN for an extension, load the corresponding rules file (derived by naming convention) at that point
+- When the user opts OUT, the full rules file is never loaded — saving context
+- Extensions without a matching `*.opt-in.md` file are always enforced — load their rule files immediately at workflow start
+
+**Enforcement** (applies only to loaded/enabled extensions):
 - Extension rules are hard constraints, not optional guidance
 - At each stage, the model intelligently evaluates which extension rules are applicable based on the stage's purpose, the artifacts being produced, and the context of the work — enforce only those rules that are relevant
 - Rules that are not applicable to the current stage should be marked as N/A in the compliance summary (this is not a blocking finding)
 - Non-compliance with any applicable enabled extension rule is a **blocking finding** — do NOT present stage completion until resolved
 - When presenting stage completion, include a summary of extension rule compliance (compliant/non-compliant/N/A per rule, with brief rationale for N/A determinations)
 
-**Conditional Enforcement**: Extensions may be conditionally enabled/disabled. See `rule-details/inception/requirements-analysis.md` for the collection mechanism. Before enforcing any extension at ANY stage, check its `Enabled` status in `aidlc-docs/aidlc-state.md` under `## Extension Configuration`. Skip disabled extensions and log the skip in audit.md. Default to enforced if no configuration exists. Extensions without an `## Applicability Question` are always enforced.
+**Conditional Enforcement**: Extensions may be conditionally enabled/disabled. See `rule-details/inception/requirements-analysis.md` for the opt-in mechanism. Before enforcing any extension at ANY stage, check its `Enabled` status in `aidlc-docs/aidlc-state.md` under `## Extension Configuration`. Skip disabled extensions and log the skip in audit.md. Default to enforced if no configuration exists.
 
 ## MANDATORY: Content Validation
 **CRITICAL**: Before creating ANY file, you MUST validate content according to `rule-details/common/content-validation.md` rules:
@@ -346,7 +352,7 @@ The AI model intelligently assesses what stages are needed based on:
 
 **Skip IF**:
 - No NFR requirements
-- NFR Requirements Assessment was skipped
+- NFR Requirements was skipped
 
 **Execution**:
 1. **MANDATORY**: Log any user input during this stage in audit.md
@@ -467,7 +473,7 @@ The Operations stage will eventually include:
 - **MANDATORY**: Log every approval prompt with timestamp before asking the user
 - **MANDATORY**: Record every user response with timestamp after receiving it
 - **CRITICAL**: ALWAYS append changes to EDIT audit.md file, NEVER use tools and commands that completely overwrite its contents
-- **CRITICAL**: Using file writing tools and commands that overwrite contents of the entire audit.md and cause duplication
+- **CRITICAL**: NEVER use file writing tools and commands that overwrite the entire contents of audit.md, as this causes duplication
 - Use ISO 8601 format for timestamps (YYYY-MM-DDTHH:MM:SSZ)
 - Include stage context for each entry
 

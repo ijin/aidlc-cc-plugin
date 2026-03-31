@@ -12,8 +12,8 @@ User Stories focus on:
 
 ## Prerequisites
 - Workspace Detection must be complete
-- Requirements Analysis recommended (can reference requirements if available)
-- Workflow Planning must indicate User Stories stage should execute
+- Requirements Analysis recommended (provides functional context)
+- User Stories recommended (user stories guide design decisions)
 
 ## Intelligent Assessment Guidelines
 
@@ -248,7 +248,7 @@ If the analysis in step 9 reveals ANY ambiguous answers, you MUST:
 - [ ] Save all generated artifacts
 
 ## Step 18: Continue or Complete Generation
-- [ ] If more steps remain, return to Step 14
+- [ ] If more steps remain, return to Step 15
 - [ ] If all steps complete, verify stories are ready for next stage
 - [ ] Ensure all mandatory artifacts are generated
 
