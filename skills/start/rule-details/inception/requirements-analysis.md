@@ -74,7 +74,7 @@ Analyze whatever the user has provided:
    - Intent statements or descriptions (already logged in audit.md)
    - Existing requirements documents (search workspace if mentioned)
    - Pasted content or file references
-   - Convert any non-markdown documents to markdown format 
+   - Convert any non-markdown documents to markdown format
 
 ### Step 5: Thorough Completeness Analysis
 
@@ -90,9 +90,12 @@ Analyze whatever the user has provided:
 
 **When in doubt, ask questions** - incomplete requirements lead to poor implementations.
 
-### Step 5.1: Extension Applicability Questions
+### Step 5.1: Extension Opt-In Prompts
 
-**MANDATORY**: Scan all loaded extension files for an `## Applicability Question` section. For each extension that declares one, include that question in the clarifying questions asked in Step 6 using `AskUserQuestion`. After receiving answers, record each extension's enablement status in `aidlc-docs/aidlc-state.md` under `## Extension Configuration`:
+**MANDATORY**: Scan all loaded `*.opt-in.md` files (loaded at workflow start from `rule-details/extensions/` subdirectories) for an `## Opt-In Prompt` section. For each extension that declares one, include that question in the clarifying questions asked in Step 6 using `AskUserQuestion`.
+
+After receiving answers:
+1. Record each extension's enablement status in `aidlc-docs/aidlc-state.md` under `## Extension Configuration`:
 
 ```markdown
 ## Extension Configuration
@@ -100,6 +103,8 @@ Analyze whatever the user has provided:
 |---|---|---|
 | [Extension Name] | [Yes/No] | Requirements Analysis |
 ```
+
+2. **Deferred Rule Loading**: For each extension the user opted IN, load the full rules file now. The rules file is derived by naming convention: strip `.opt-in.md` from the opt-in filename and append `.md` (e.g., `security-baseline.opt-in.md` → `security-baseline.md`). For extensions the user opted OUT, do NOT load the full rules file.
 
 ### Step 6: Ask Clarifying Questions (PROACTIVE APPROACH)
    - **ALWAYS** ask clarifying questions using the `AskUserQuestion` tool unless requirements are exceptionally clear and complete
@@ -162,7 +167,7 @@ Update `aidlc-docs/aidlc-state.md`:
      3. **Formatted Workflow Message** (mandatory): Always end with this exact format:
 
 ```markdown
-> **📋 <u>**REVIEW REQUIRED:**</u>**  
+> **📋 <u>**REVIEW REQUIRED:**</u>**
 > Please examine the requirements document at: `aidlc-docs/inception/requirements/requirements.md`
 
 
@@ -171,9 +176,9 @@ Update `aidlc-docs/aidlc-state.md`:
 >
 > **You may:**
 >
-> 🔧 **Request Changes** -  Ask for modifications to the requirements if required based on your review 
+> 🔧 **Request Changes** -  Ask for modifications to the requirements if required based on your review
 > [IF User Stories will be skipped, add this option:]
-> 📝 **Add User Stories** - Choose to Include **User Stories** stage (currently skipped based on project simplicity)  
+> 📝 **Add User Stories** - Choose to Include **User Stories** stage (currently skipped based on project simplicity)
 > ✅ **Approve & Continue** - Approve requirements and proceed to **[User Stories/Workflow Planning]**
 
 ---
