@@ -59,8 +59,11 @@ The full AI-DLC methodology is documented in supporting files that you MUST read
 ### Operations Phase Rules (read when entering operations)
 - **[rule-details/operations/operations.md](rule-details/operations/operations.md)** - Operations phase guidance
 
-### Extensions (loaded at workflow start, enforced as cross-cutting constraints)
-- **[rule-details/extensions/security/baseline/security-baseline.md](rule-details/extensions/security/baseline/security-baseline.md)** - OWASP Top 10 baseline security rules
+### Extensions (opt-in files loaded at workflow start, full rules loaded on-demand)
+- **[rule-details/extensions/security/baseline/security-baseline.opt-in.md](rule-details/extensions/security/baseline/security-baseline.opt-in.md)** - Security baseline opt-in prompt
+- **[rule-details/extensions/security/baseline/security-baseline.md](rule-details/extensions/security/baseline/security-baseline.md)** - OWASP Top 10 baseline security rules (loaded after opt-in)
+- **[rule-details/extensions/testing/property-based/property-based-testing.opt-in.md](rule-details/extensions/testing/property-based/property-based-testing.opt-in.md)** - Property-based testing opt-in prompt
+- **[rule-details/extensions/testing/property-based/property-based-testing.md](rule-details/extensions/testing/property-based/property-based-testing.md)** - Property-based testing rules (loaded after opt-in)
 
 ## User Intent
 
