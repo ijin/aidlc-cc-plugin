@@ -92,7 +92,7 @@ Analyze whatever the user has provided:
 
 ### Step 5.1: Extension Opt-In Prompts
 
-**MANDATORY**: Scan all loaded `*.opt-in.md` files (loaded at workflow start from `rule-details/extensions/` subdirectories) for an `## Opt-In Prompt` section. For each extension that declares one, include that question in the clarifying questions asked in Step 6 using `AskUserQuestion`.
+**MANDATORY**: Scan all loaded `*.opt-in.md` files (loaded at workflow start from `rule-details/extensions/` subdirectories) for an `## Opt-In Prompt` section. For each extension that declares one, include that question in the clarifying questions asked in Step 6 using `AskUserQuestion`. Present each opt-in question in the same language as the user's conversation.
 
 After receiving answers:
 1. Record each extension's enablement status in `aidlc-docs/aidlc-state.md` under `## Extension Configuration`:
